@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizz Buzz</title>
+    <style>
+        body{
+            background-color:aquamarine;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        let number=0;
+        let playerNumber=1
+        let players=[];
+        alert(`
+        Welcome to Fizz Buzz Game
+        Rules are simple.
+        The current numbers are shown.
+        If the number is divied by 3,
+         you would have to enter 'Fizz' or you lose.
+        If the number is divied by 5,
+         you would have to enter 'Buzz' or you lose.
+        If the number is divied by both 3 and 5,
+         you would have to enter 'Fizz Buzz' or you lose.
+        The rest numbers can be entered as it is.
+
+        There will be random pick form players to play.
+
+        `)
+
+        let playerName;
+        function playerNameInput(){
+            while(1){
+            playerName = prompt(`Enter Player ${playerNumber} Name: `)
+            if(isNaN(playerName) && !players.includes(playerName)){
+                if(playerName=='start') break;
+                playerNumber++;
+                players.push(playerName)
+            }
+        }
+        }
+        playerNameInput()
+
+        let currentPlayer='Everyone';
+        while (1){
+            while(players.length<=1){
+                alert('There must be at least two player to player this game')
+                playerNameInput()
+            }
+            let randomPlayer = Math.floor(Math.random() * players.length)
+            currentPlayer=players[randomPlayer]
+            let userInput = prompt(`
+            Current Number: ${number+1}
+            ${currentPlayer}, enter number or Fizz or Buzz or Fizz Buzz: 
+            `)
+            if( userInput.toUpperCase() =='FIZZ' || userInput.toUpperCase() =='BUZZ'|| userInput.toUpperCase()=='FIZZ BUZZ' || !isNaN(+userInput)){
+                if (userInput.toUpperCase() =='FIZZ'){
+                    number++;
+                    if(number%3 != 0){
+                        //you lose
+                        alert('Your number cannot be divied by 3.')
+                        break
+                    }else if(number%5==0){
+                        //you lose
+                        alert('The number is also divied by 5. The answer should be Fizz Buzz')
+                    }
+                }else if(userInput.toUpperCase()=='BUZZ'){
+                    number++;
+                    if(number%5 != 0){
+                        //you lose
+                        alert('The number cannot be divied by 5.')
+                        break
+                    }else if(number%3==0){
+                        //you lose
+                        alert('The number is also divied by 3. The answer should be Fizz Buzz')
+                    }
+                }else if(userInput.toUpperCase()=='FIZZ BUZZ'){
+                    number++;
+                    if(number%3 !==0 && number%5 !==0){
+                        //you lose
+                        alert('The number cannot be divided by both 3 and 5')
+                        break;
+                    }
+                }else{
+                    number++;
+                    if(+userInput%3==0 || +userInput%5==0){
+                        console.log('3')
+                        break;
+                    }else if(+userInput!=number){
+                        console.log('4')
+                        break;
+                    }
+                    console.log('it was here')
+                }
+            }else{
+                continue
+            }
+
+        }
+        alert(`${currentPlayer}, you lost`)
+
+    </script>
+</body>
+</html>
