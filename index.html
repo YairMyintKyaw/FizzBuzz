@@ -36,7 +36,9 @@
         let playerName;
         function playerNameInput(){
             while(1){
-            playerName = prompt(`Enter Player ${playerNumber} Name: `)
+            playerName = prompt(`
+            Type 'start' instead of player name after all of the players' names are typed!!
+            Enter Player ${playerNumber} Name: `)
             if(isNaN(playerName) && !players.includes(playerName)){
                 if(playerName=='start') break;
                 playerNumber++;
