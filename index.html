@@ -5,107 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fizz Buzz</title>
-    <style>
-        body{
-            background-color:aquamarine;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="mainContainer">
+        <div class="gameArea">
+            <div><strong>Fizz Buzz</strong></div>
+            
+            <div class="currentNumber">Current number : 1</div>
+            <div class="numberBtn">
+                <div class="leftDivOfNumber"></div>
+                <button class="numberButton">1</button>
+                <div class="rightDivOfNumber"></div>
+            </div>
+            <div class="FizzBuzzBtnContainer">
+                <button class="fizzBtn padding">Fizz </button>
+                <button class="fizzBuzzBtn padding">FizzBuzz</button>
+                <button class="BuzzBtn padding">Buzz</button>
+            </div>
+        </div>
+        
+
+        <div class="ruleArea">
+            <p>
+                
+                <em>
+                    <strong>Welcome to Fizz Buzz Game<br><br></strong>
+                    Rules are simple.<br>
+                    The current numbers are shown.<br>
+                    If the number is divied by 3,<br>
+                    you would have to press 'Fizz' or you lose.<br>
+                    If the number is divied by 5,<br>
+                    you would have to press 'Buzz' or you lose.<br>
+                    If the number is divied by both 3 and 5,<br>
+                    you would have to press 'Fizz Buzz' or you lose.<br>
+                    The rest numbers can be press the number button.<br>
+            
+                    There will be random pick form players to play.
+                </em>
+            </p>
+            <button class="startBtnInRuleArea">Start</button>
+        </div>
+        <div class="choosingNumberOfPlayer">
+            <label for="ChooseNoOfPlayer">Choose the number of players</label>
+            <div class="choosingPlayerNoBtnDiv">
+                <div >
+                    <button class="singlePlayerBtn">Single Player</button>
+                    <select class="multiPlayerBtn" id="cars">
+                        <option value="Multi Players">Multi Players</option>
+                        <option value="2">2 Players</option>
+                        <option value="3">3 Players</option>
+                        <option value="4">4 Players</option>
+
+                    </select>
+                </div>
+                
+                <button class="startBtnInchoosingPlayer">Start</button>
+                
+            </div>
+            
+        </div>
+        <div class="winnerDeclaration">
+            <div>Congratulation</div>
+            <div>You are WINNNER!!</div>
+            <button class="playAgain">Play Again</button>
+        </div>
+        <div class="highesetScoreDeclaration"> 
+            <div class="highesetScoreDisplay">Highest Score:0</div>
+            <div class="currentScore">Score:0</div>  
+            <button class="playAgain">Play Again</button>
+        </div>
+    </div>
+
+    <div class="loserDeclarationDiv">
+        
+        <div class='loserName'><strong>Mr.loser ,</strong> you lose</div>
     
-    <script>
-        let number=0;
-        let playerNumber=1
-        let players=[];
-        alert(`
-        Welcome to Fizz Buzz Game
-        Rules are simple.
-        The current numbers are shown.
-        If the number is divied by 3,
-         you would have to enter 'Fizz' or you lose.
-        If the number is divied by 5,
-         you would have to enter 'Buzz' or you lose.
-        If the number is divied by both 3 and 5,
-         you would have to enter 'Fizz Buzz' or you lose.
-        The rest numbers can be entered as it is.
+    </div>
 
-        There will be random pick form players to play.
 
-        `)
-
-        let playerName;
-        function playerNameInput(){
-            while(1){
-            playerName = prompt(`
-            Type 'start' instead of player name after all of the players' names are typed!!
-            Enter Player ${playerNumber} Name: `)
-            if(isNaN(playerName) && !players.includes(playerName)){
-                if(playerName=='start') break;
-                playerNumber++;
-                players.push(playerName)
-            }
-        }
-        }
-        playerNameInput()
-
-        let currentPlayer='Everyone';
-        while (1){
-            while(players.length<=1){
-                alert('There must be at least two player to player this game')
-                playerNameInput()
-            }
-            let randomPlayer = Math.floor(Math.random() * players.length)
-            currentPlayer=players[randomPlayer]
-            let userInput = prompt(`
-            Current Number: ${number+1}
-            ${currentPlayer}, enter number or Fizz or Buzz or Fizz Buzz: 
-            `)
-            if( userInput.toUpperCase() =='FIZZ' || userInput.toUpperCase() =='BUZZ'|| userInput.toUpperCase()=='FIZZ BUZZ' || !isNaN(+userInput)){
-                if (userInput.toUpperCase() =='FIZZ'){
-                    number++;
-                    if(number%3 != 0){
-                        //you lose
-                        alert('Your number cannot be divied by 3.')
-                        break
-                    }else if(number%5==0){
-                        //you lose
-                        alert('The number is also divied by 5. The answer should be Fizz Buzz')
-                    }
-                }else if(userInput.toUpperCase()=='BUZZ'){
-                    number++;
-                    if(number%5 != 0){
-                        //you lose
-                        alert('The number cannot be divied by 5.')
-                        break
-                    }else if(number%3==0){
-                        //you lose
-                        alert('The number is also divied by 3. The answer should be Fizz Buzz')
-                    }
-                }else if(userInput.toUpperCase()=='FIZZ BUZZ'){
-                    number++;
-                    if(number%3 !==0 && number%5 !==0){
-                        //you lose
-                        alert('The number cannot be divided by both 3 and 5')
-                        break;
-                    }
-                }else{
-                    number++;
-                    if(+userInput%3==0 || +userInput%5==0){
-                        console.log('3')
-                        break;
-                    }else if(+userInput!=number){
-                        console.log('4')
-                        break;
-                    }
-                    console.log('it was here')
-                }
-            }else{
-                continue
-            }
-
-        }
-        alert(`${currentPlayer}, you lost`)
-
-    </script>
+    
+    <script src='script.js'></script>
 </body>
 </html>
