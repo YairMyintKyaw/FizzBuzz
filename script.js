@@ -45,20 +45,31 @@ let playerList=[]
 let highestScore= localStorage.getItem('highestScore') || 0
 
 //multiplayerButton
-for(let i=0; i<4;i++){
+/*for(let i=0; i<4;i++){
     if(i==0){
         optionBtn[i].addEventListener('click',()=>{
-            multiPlayerBtn.style.border='none'
         })
     }else{
-        optionBtn[i].addEventListener('change',(event)=>{
+        optionBtn[i].addEventListener('click',(event)=>{
             multiPlayerBtn.style.border='3px solid #0f7173'
             singlePlayerBtn.style.border='none'
             typeOfGame='MultiPlayer'
             numberOfPlayer=+event.target.value
         })
     }
-}
+}*/
+
+multiPlayerBtn.addEventListener('change',(event)=>{
+    let value=event.target.value
+    if(value != 'Multi Players'){
+        multiPlayerBtn.style.border='3px solid #0f7173'
+        singlePlayerBtn.style.border='none'
+        typeOfGame='MultiPlayer'
+        numberOfPlayer=+event.target.value
+    }else{
+        multiPlayerBtn.style.border='none'
+    }
+})
     
 //single player button
 singlePlayerBtn.addEventListener('click',()=>{
