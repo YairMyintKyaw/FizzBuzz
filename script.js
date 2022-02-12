@@ -51,7 +51,7 @@ for(let i=0; i<4;i++){
             multiPlayerBtn.style.border='none'
         })
     }else{
-        optionBtn[i].addEventListener('click',(event)=>{
+        optionBtn[i].addEventListener('change',(event)=>{
             multiPlayerBtn.style.border='3px solid #0f7173'
             singlePlayerBtn.style.border='none'
             typeOfGame='MultiPlayer'
