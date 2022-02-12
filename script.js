@@ -70,7 +70,21 @@ multiPlayerBtn.addEventListener('change',(event)=>{
         multiPlayerBtn.style.border='none'
     }
 })
+
+multiPlayerBtn.addEventListener('touchstart ',multiPlayerBtnFunc)
+multiPlayerBtn.addEventListener('click',multiPlayerBtnFunc)
     
+function multiPlayerBtnFunc(event){
+    let value=event.target.value
+    if(value != 'Multi Players'){
+        multiPlayerBtn.style.border='3px solid #0f7173'
+        singlePlayerBtn.style.border='none'
+        typeOfGame='MultiPlayer'
+        numberOfPlayer=+event.target.value
+    }else{
+        multiPlayerBtn.style.border='none'
+    }
+}
 //single player button
 singlePlayerBtn.addEventListener('click',()=>{
     typeOfGame='SinglePlayer'
